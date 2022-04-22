@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest run  --coverage"
+    "coverage": "vitest run  --coverage",
+    "test": "vitest dev"
   },
   "dependencies": {
     "react": "^18.0.0",
