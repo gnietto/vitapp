@@ -1,9 +1,16 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "google"],
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/jsx-runtime",
+    "airbnb",
+    "prettier"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -12,19 +19,15 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
-  "rules": {},
-  "overrides": [
-    {
-      "files": ["*.js", "*.ts", "*.jsx", "*.tsx", "*.css", "*.html", "*.md"],
-      "rules": {
-        "indent": "off",
-        "quotes": "off",
-        "max-len": "off",
-        "comma-dangle": 0,
-        "require-jsdoc": 0,
-        "object-curly-spacing": "always"
-      }
-    }
-  ]
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/react-in-jsx-scope": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".ts", ".jsx", ".tsx"] }
+    ]
+  }
 }
