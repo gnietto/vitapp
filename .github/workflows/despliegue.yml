@@ -1,0 +1,30 @@
+name: despliegue
+on:
+  push:
+    branches: [main]
+jobs:
+  build_test:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0
+      - name: Use Nodejs ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Instala dependencias
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm run build
+      - name: despliegue a gh pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./dist
+          publish_branch: web
