@@ -1,5 +1,5 @@
 {
-  "name": "vitapp",
+  "name": "@gnietto/vitapp",
   "private": true,
   "main": "index.tsx",
   "version": "0.1.0",
